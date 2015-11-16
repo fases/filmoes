@@ -1,0 +1,579 @@
+@font-face {
+    font-family: "Oswald";
+    src: url("Oswald-Regular.ttf") format("truetype");
+}
+
+*{
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    font-family: Oswald, sans-serif;
+}
+
+body{
+    overflow-y: scroll;
+}
+
+#subir{
+    text-decoration: none;
+    font-size: 20px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #ff6200;
+}
+
+#subirDiv{
+    padding: 0px 10px 0px 14px;
+    background-color: #000;
+    -webkit-transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
+    transition: 0.2s linear;
+}
+
+#subirDiv:hover{
+    color: #fff;
+}
+
+#subirDiv div{
+    text-align: center;
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+/* ============================================================================= TOP */
+
+/* ====================================== FAIXA */
+
+#topBg{
+    background: url(../imagens/bg.jpg) no-repeat;
+    background-attachment: fixed;
+}
+
+#faixa{
+    height: 20px;
+    background-color: #ed6511;
+}
+
+#faixa div{
+    width: 950px;
+    margin: 0 auto;
+}
+
+#faixa div span{
+    margin-top: -2px;
+    float: right;
+}
+
+#faixa div span a{
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+}
+
+#faixa div span a:hover{
+    text-decoration: underline;
+}
+
+/* ====================================== LOGO */
+
+#top{
+    width: 950px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+#topL{
+    margin-left: 40px;
+    float: left;
+}
+
+/* ====================================== MENU + ESTADO */
+
+#topR{
+    margin-top: 80px;
+    float: right;
+}
+
+#topR p{
+    margin-top: -30px;
+    float: right;
+    margin-right: 100px;
+}
+
+#topR ul{
+    clear: both;
+    margin-right: 40px;
+    list-style: none;
+}
+
+#topR ul li{
+    float: left;
+}
+
+#topR ul li a{
+    /*background-color: rgba(255, 255, 255, 0.5);*/
+    border-top: 3px solid #000;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    color: #000;
+
+    -webkit-transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
+}
+
+#topR ul li a:hover{
+    color: #ff6200;
+    /*background-color: rgba(221, 94, 15, 0.5);*/
+}
+
+/* ====================================== SLIDE */
+
+#boxBg{
+    padding-top: 40px;
+    clear: both;
+}
+
+#box{
+    width: 950px;
+    height: 340px;
+    border-top: 2px solid #ff6200;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.prev, .next{
+    position: absolute; 
+    top: 0;
+    width: 65px;
+    opacity: .0;
+    filter: alpha(opacity=0);
+    z-index: 800;
+    height: 100%;
+    cursor: pointer;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.prev{
+    left: 0;  
+}
+
+.prev:hover{
+    background: url(../imagens/slide/left.png) no-repeat;
+}
+
+.next{
+    right: 0; 
+}
+
+.next:hover{
+    background: url(../imagens/slide/right.png) no-repeat;
+}
+
+.prev:hover, .next:hover{
+    opacity: .5;
+    filter: alpha(opacity=50);
+
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+
+
+/* ============================================================================= MID */
+
+/* ====================================== MENU CINEMA */
+
+#midBg{
+    background: url(../imagens/bg2.jpg) repeat-y;
+    background-attachment: fixed;
+    -webkit-box-shadow: inset 0px 20px 30px -20px rgba(50, 50, 50, 0.4);
+    -moz-box-shadow: inset 0px 20px 30px -20px rgba(50, 50, 50, 0.4);
+    box-shadow: inset 0px 20px 30px -20px rgba(50, 50, 50, 0.4);
+}
+
+#mid{
+    width: 950px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+#mid ul{
+    list-style: none;
+}
+
+#mid ul li{
+    float: left;
+}
+
+#mid ul li a{
+    text-decoration: none;
+}
+
+#mid ul li a div{
+    font-size: 15px;
+    text-align: center;
+    color: #000;
+    padding-bottom: 1px;
+    background-color: rgba(0, 0, 0, 0.08);
+    width: 122px;
+
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+#mid ul li a div:hover{
+    color: #ed6511;
+}
+
+.cinema{
+    clear: both;
+    padding-top: 20px;
+}
+
+/* ============================================================================= RIGHT MID */
+
+.infos{
+    width: 310px;
+    float: right;
+}
+
+.t1{
+    font-size: 15px;
+    color: #ff6200;
+}
+
+.hIco{
+    cursor: default;
+    font-size: 10px;
+    padding: 0px 3px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+}
+
+/* ====================================== PREÇO */
+
+.topPreco{
+    padding-top: 40px;
+    border-bottom: 3px solid #000;
+}
+
+.topPreco h3{
+    float: right;
+    padding: 1px 5px;
+    color: #fff;
+    background-color: #000;
+}
+
+.topPreco p{
+    clear: both;
+}
+
+.midPreco{
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px 5px 0px 5px;
+}
+
+.midPreco p{
+    border-left: 2px solid #000;
+    font-size: 14px;
+    margin-top: 8px;
+    padding-left: 5px;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.midPreco p:hover{
+    border-color: #ed6511;
+}
+
+/* ====================================== LOCALIZAÇÃO */
+
+.topLoc{
+    padding-top: 20px;
+    border-bottom: 3px solid #000;
+}
+
+.topLoc h3{
+    float: right;
+    padding: 1px 5px;
+    color: #fff;
+    background-color: #000;
+}
+
+.topLoc p{
+    clear: both;
+}
+
+.midLoc{
+    display: none;
+    padding: 5px 5px 0px 5px;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.midLoc iframe{
+    margin-top: -5px;
+    margin-left: -5px;
+    width: 310px;
+    height: 200px;
+}
+
+.midLoc p{
+    border-left: 2px solid #000;
+    font-size: 14px;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+.espLoc{
+    height: 10px; 
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.barraLoc{
+    cursor: pointer;
+    font-size: 13px;
+    width: 100%;
+    height: 20px;
+    background-color: #000;
+    text-align: center;
+    color: #fff;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.barraLoc:hover{
+    color: #ff6200;
+}
+
+/* ============================================================================= LEFT MID */
+
+/* ====================================== PROGRAMAÇÃO */
+
+.prog{
+    width: 620px;
+    float: left;
+}
+
+.film{
+    border-left: 3px solid #000;
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0.05);
+    padding: 5px 7px 5px 7px;
+    margin-bottom: 10px;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.film:hover{
+    background-color: rgba(0, 0, 0, 0.08);
+    border-left: 6px solid #000;
+}
+
+.nomeFilm{
+    float: left;
+    color: #dd5e0f;
+    font-size: 20px;
+}
+
+.icosFilm{
+    margin-left: 5px;
+    float: right;
+}
+
+.salaFilm{
+    font-size: 13px;
+    margin-top: 10px;
+    background-color: #000;
+    text-align: center;
+    width: 50px;
+    color: #dd5e0f;
+}
+
+.horaFilm{
+    margin-top: -21px;
+    padding-left: 55px;
+    border-bottom: 2px solid #000;
+}
+
+/* ====================================== ICOS */
+
+.estreia{
+    cursor: default;
+    float: left;
+    border: 1px solid red;
+    background-color: red;
+    font-size: 12px;
+    color: #000;
+    padding: 0px 3px;
+    margin-top: 5px;
+    margin-right: 5px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.livre{
+    cursor: default;
+    border: 1px solid #00e300;
+    background-color: #00e300;
+    font-size: 12px;
+    color: #000;
+    padding: 0px 5px;
+    margin-left: 3px;
+}
+
+.anos10{
+    cursor: default;
+    border: 1px solid #00c1d8;
+    background-color: #00c1d8;
+    font-size: 12px;
+    color: #000;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.anos12{
+    cursor: default;
+    border: 1px solid #eeda00;
+    background-color: #eeda00;
+    font-size: 12px;
+    color: #000;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.anos14{
+    cursor: default;
+    border: 1px solid #ff9c00;
+    background-color: #ff9c00;
+    font-size: 12px;
+    color: #000;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.anos16{
+    cursor: default;
+    border: 1px solid #e10000;
+    background-color: #e10000;
+    font-size: 12px;
+    color: #000;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.anos18{
+    cursor: default;
+    border: 1px solid #000;
+    background-color: #000;
+    font-size: 12px;
+    color: #fff;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.dublado{
+    cursor: default;
+    border: 1px solid #bbb;
+    background-color: #cbcbcb;
+    font-size: 12px;
+    color: red;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.legendado{
+    cursor: default;
+    border: 1px solid #bbb;
+    background-color: #cbcbcb;
+    font-size: 12px;
+    color: blue;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.nacional{
+    cursor: default;
+    border: 1px solid #bbb;
+    background-color: #cbcbcb;
+    font-size: 12px;
+    color: forestgreen;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.vip{
+    cursor: default;
+    border: 1px solid #000;
+    background-color: #000;
+    font-size: 12px;
+    color: #fff;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.macroxe{
+    cursor: default;
+    border: 1px solid #100072;
+    background-color: #100072;
+    font-size: 12px;
+    color: #fff;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+.tresd{
+    cursor: default;
+    border: 1px solid darkred;
+    background-color: darkred;
+    font-size: 12px;
+    color: #fff;
+    padding: 0px 3px;
+    margin-left: 3px;
+}
+
+
+
+/* ============================================================================= BOT */
+
+#botBg{
+    border-top: 2px solid #fff;
+    height: 300px;
+    background-color: #000;
+    width: 100%;
+}
+
+#bot p{
+    font-size: 13px;
+    padding-top: 137px;
+    color: #ff6200;
+    text-align: center;
+}
+
+#bot p a, #bot p a:hover font{
+    color: #ff6200;
+    text-decoration: none;
+}
+
+#bot p a font, #bot p a:hover{
+    color: red;
+}
