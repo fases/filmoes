@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+include "config.php";
 include "simple_html_dom.php";
 
 $url = "http://localhost/filmoes/cinepolis-1.php";
@@ -22,6 +23,13 @@ $html2 = file_get_html($url2);
 $content2 = $html2->find('table', 0);
 $contTR2 = 0;
 $contTD2 = 0;
+
+/* $url3 = "http://localhost/filmoes/moviecom.php";
+  $html3 = file_get_html($url3);
+
+  $content3 = $html3->find('table#tabela2');
+  $contTR3 = 0;
+  $contTD3 = 0; */
 ?>
 <html>
     <head>
@@ -90,7 +98,7 @@ $contTD2 = 0;
                 <h1 style="text-align: center; border-bottom: 3px solid #000; width: 618px;">Programação</h1>
                 <ul>
                     <li><a href="#" class="scroll"><div>Cinemark<br/>Midway Mall</div></a></li>
-                    <li><a href="#" class="scroll"><div style="margin-left: 2px;">Moviecom<br/>Praia Shopping</div></a></li>
+                    <li><a href="#moviecom" class="scroll"><div style="margin-left: 2px;">Moviecom<br/>Praia Shopping</div></a></li>
                     <li><a href="#natalshopping" class="scroll"><div style="margin-left: 2px;">Cinépolis<br/>Natal Shopping</div></a></li>
                     <li><a href="#norteshopping" class="scroll"><div style="margin-left: 2px;">Cinépolis<br/>Norte Shopping</div></a></li>
                     <li><a href="#multicine" class="scroll"><div style="margin-left: 2px;">Multicine<br/>Partage Mossoró</div></a></li>
@@ -182,49 +190,10 @@ $contTD2 = 0;
                         <div class="preco">
                             <div class="topPreco"><h3>Preço</h3><p></p></div>
                             <div id="midPreNatalShopping" class="midPreco">
-                                <p>
-                                    <font class="t1"> Salas Tradicionais </font> <br/>
-                                    Seg., ter. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">M</font> e R$ 20,00 <font class="hIco">N</font> <br/>
-                                    Qua. (exceto fer.): R$ 18,00 <font class="hIco">TD</font> <br/>
-                                    Qui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">M</font> e R$ 25,00 <font class="hIco">N</font> <br/>
-                                </p>
-                                <p>
-                                    <font class="t1"> Salas 3D </font> <br/>
-                                    Seg., ter. <font class="hIco">EF</font>: R$ 26,00 <font class="hIco">TD</font> <br/>
-                                    Qua. <font class="hIco">EF</font>: R$ 25,00 <font class="hIco">TD</font> <br/>
-                                    Qui., sex., sáb., dom. e feriado: R$ 31,00 <font class="hIco">TD</font> <br/>
-                                </p>
-                                <p>
-                                    <font class="t1"> Salas VIP </font> <br/>
-                                    Seg., ter. <font class="hIco">EF</font>: R$ 33,00 <font class="hIco">TD</font> <br/>
-                                    Qua. <font class="hIco">EF</font>: R$ 31,00 <font class="hIco">TD</font> <br/>
-                                    Qui., sex., sáb., dom. e feriado: R$ 42,00 <font class="hIco">TD</font> <br/>
-                                </p>
-                                <p>
-                                    <font class="t1"> Salas VIP 3D</font> <br/>
-                                    Seg., ter. <font class="hIco">EF</font>: R$ 39,00 <font class="hIco">TD</font> <br/>
-                                    Qua. <font class="hIco">EF</font>: R$ 37,00 <font class="hIco">TD</font> <br/>
-                                    Qui., sex., sáb., dom. e feriado: R$ 45,00 <font class="hIco">TD</font> <br/>
-                                </p>
-                                <p>
-                                    <font class="t1"> Salas Macro XE Tradicionais </font> <br/>
-                                    Seg., ter. <font class="hIco">EF</font>: R$ 20,00 <font class="hIco">M</font> e R$ 23,00 <font class="hIco">N</font> <br/>
-                                    Qua. <font class="hIco">EF</font>: R$ 21,00 <font class="hIco">TD</font> <br/>
-                                    Qui., sex., sáb., dom. e feriado: R$ 25,00 <font class="hIco">M</font> e R$ 28,00 <font class="hIco">N</font> <br/>
-                                </p>
-                                <p>
-                                    <font class="t1">Salas Macro XE 3D</font> <br/>
-                                    Seg., ter. <font class="hIco">EF</font>: R$ 29,00 <font class="hIco">TD</font> <br/>
-                                    Qua. <font class="hIco">EF</font>: R$ 28,00 <font class="hIco">TD</font> <br/>
-                                    Qui., sex., sáb., dom. e feriado: R$ 34,00 <font class="hIco">TD</font> <br/>
-                                </p>
-                                <p>
-                                    <font class="hIco">OBS</font>: Matinê são todas as sessões iniciadas até 16h55 <br/>
-                                    <font class="hIco">EF</font>: Exceto Feriado <br/>
-                                    <font class="hIco">TD</font>: Todo o Dia <br/>
-                                    <font class="hIco">M</font>: Matinê <br/>
-                                    <font class="hIco">N</font>: Noite
-                                </p>
+                                <?php
+                                $selecPreco = mysql_fetch_array(mysql_query("SELECT preco FROM cinemas WHERE id = '3'"));
+                                echo "$selecPreco[0]\n";
+                                ?>
                             </div>
                             <div class="espLoc"></div>
                             <div id="preNatalShopping" class="barraLoc"><font id="rpNatalShopping" style="display: none;">>></font><font id="lpNatalShopping"><<</font></div>
@@ -233,12 +202,14 @@ $contTD2 = 0;
                         <div class="loc">
                             <div class="topLoc"><h3>Localização</h3><p></p></div>
                             <div id="midNatalShopping" class="midLoc">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.0957190284266!2d-35.2134393852327!3d-5.842131895767035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff7f174cbe21%3A0x2dca4e1d5201607!2sCin%C3%A9polis!5e0!3m2!1spt-BR!2sbr!4v1447375115106" frameborder="0" allowfullscreen></iframe>
-                                <p>
-                                    Avenida Senador Salgado Filho, 2234 <br/>
-                                    Loja 400 – piso L2 – Candelaria <br/>
-                                    Natal - RN
-                                </p>
+                                <?php
+                                $selecLoc = mysql_fetch_array(mysql_query("SELECT * FROM localizacao WHERE idCinema = '3'"));
+                                $mapa = $selecLoc['mapa'];
+                                $l1 = $selecLoc['l1'];
+                                $l2 = $selecLoc['l2'];
+                                $l3 = $selecLoc['l3'];
+                                echo "$mapa\n<p>\n$l1 <br/>\n$l2 <br/>\n$l3\n</p>\n";
+                                ?>
                             </div>
                             <div class="espLoc"></div>
                             <div id="locNatalShopping" class="barraLoc"><font id="rNatalShopping">>></font><font id="lNatalShopping" style="display: none;"><<</font></div>
@@ -333,33 +304,10 @@ $contTD2 = 0;
                         <div class="preco">
                             <div class="topPreco"><h3>Preço</h3><p></p></div>
                             <div id="midPreNorteShopping" class="midPreco">
-                                <p>
-                                    <font class="t1"> Salas Tradicionais </font> <br/>
-                                    Seg., ter., qua. <font class="hIco">EF</font>: R$ 13,00 <font class="hIco">M</font> e R$ 15,00 <font class="hIco">N</font>
-                                    Qui., sex., sáb., dom. e feriado: R$ 17,00 <font class="hIco">M</font> e R$ 19,00 <font class="hIco">N</font>
-                                </p>
-                                <p>
-                                    <font class="t1"> Salas 3D </font> <br/>
-                                    Seg., ter., qua. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">TD</font>
-                                    Qui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">TD</font>
-                                </p>
-                                <p>
-                                    <font class="t1"> Salas Macro XE Tradicionais </font> <br/>
-                                    Seg., ter., qua. <font class="hIco">EF</font>: R$ 13,00 <font class="hIco">M</font> e R$ 15,00 <font class="hIco">N</font>
-                                    Qui., sex., sáb., dom. e feriado: R$ 17,00 <font class="hIco">M</font> e R$ 19,00 <font class="hIco">N</font>
-                                </p>
-                                <p>
-                                    <font class="t1"> Salas Macro XE 3D </font> <br/>
-                                    Seg., ter., qua. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">TD</font>
-                                    Qui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">TD</font>
-                                </p>
-                                <p>
-                                    <font class="hIco">OBS</font>: Matinê são todas as sessões iniciadas até 16h55 <br/>
-                                    <font class="hIco">EF</font>: Exceto Feriado <br/>
-                                    <font class="hIco">TD</font>: Todo o Dia <br/>
-                                    <font class="hIco">M</font>: Matinê <br/>
-                                    <font class="hIco">N</font>: Noite
-                                </p>
+                                <?php
+                                $selecPreco = mysql_fetch_array(mysql_query("SELECT preco FROM cinemas WHERE id = '4'"));
+                                echo "$selecPreco[0]\n";
+                                ?>
                             </div>
                             <div class="espLoc"></div>
                             <div id="preNorteShopping" class="barraLoc"><font id="rpNorteShopping" style="display: none;">>></font><font id="lpNorteShopping"><<</font></div>
@@ -368,18 +316,21 @@ $contTD2 = 0;
                         <div class="loc">
                             <div class="topLoc"><h3>Localização</h3><p></p></div>
                             <div id="midNorteShopping" class="midLoc">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.6901799849184!2d-35.2492955852332!3d-5.757655095827385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b3aa4484175c1d%3A0x7c50cdd1371fb131!2sPartage+Norte+Shopping+Natal!5e0!3m2!1spt-BR!2sbr!4v1447375528809" frameborder="0" allowfullscreen></iframe>
-                                <p>
-                                    Av Doutor Medeiros Filho, 2395 <br/>
-                                    Loja 230A – Bairro Potengi <br/>
-                                    Natal - RN
-                                </p>
+                                <?php
+                                $selecLoc = mysql_fetch_array(mysql_query("SELECT * FROM localizacao WHERE idCinema = '4'"));
+                                $mapa = $selecLoc['mapa'];
+                                $l1 = $selecLoc['l1'];
+                                $l2 = $selecLoc['l2'];
+                                $l3 = $selecLoc['l3'];
+                                echo "$mapa\n<p>\n$l1 <br/>\n$l2 <br/>\n$l3\n</p>\n";
+                                ?>
                             </div>
                             <div class="espLoc"></div>
                             <div id="locNorteShopping" class="barraLoc"><font id="rNorteShopping">>></font><font id="lNorteShopping" style="display: none;"><<</font></div>
                         </div>
                     </div>
                 </div>
+
                 <div class="cinema" id="multicine">
                     <div class="prog">
                         <h2 style="padding: 0px 0px 5px 30px;">//Multicine - Partage Shopping Mossoró</h2>
@@ -456,7 +407,10 @@ $contTD2 = 0;
                         <div class="preco">
                             <div class="topPreco"><h3>Preço</h3><p></p></div>
                             <div id="midPreMulticine" class="midPreco">
-                                <p>Não há tabela de preços!</p>
+                                <?php
+                                $selecPreco = mysql_fetch_array(mysql_query("SELECT preco FROM cinemas WHERE id = '5'"));
+                                echo "$selecPreco[0]\n";
+                                ?>
                             </div>
                             <div class="espLoc"></div>
                             <div id="preMulticine" class="barraLoc"><font id="rpMulticine" style="display: none;">>></font><font id="lpMulticine"><<</font></div>
@@ -465,19 +419,23 @@ $contTD2 = 0;
                         <div class="loc">
                             <div class="topLoc"><h3>Localização</h3><p></p></div>
                             <div id="midMulticine" class="midLoc">
-                                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.5744210714593!2d-37.379404785235806!3d-5.171942296246965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ba06ac1d109887%3A0xb8ce6a76107ec05c!2sMulticine+Cinemas!5e0!3m2!1spt-BR!2sbr!4v1447680431271" frameborder="0" allowfullscreen></iframe>
-                                <p>
-                                    Avenida João da Escóssia, 1515 <br/>
-                                    Partage Shopping Mossoró – Nova Betânia <br/>
-                                    Mossoró - RN
-                                </p>
+                                <?php
+                                $selecLoc = mysql_fetch_array(mysql_query("SELECT * FROM localizacao WHERE idCinema = '5'"));
+                                $mapa = $selecLoc['mapa'];
+                                $l1 = $selecLoc['l1'];
+                                $l2 = $selecLoc['l2'];
+                                $l3 = $selecLoc['l3'];
+                                echo "$mapa\n<p>\n$l1 <br/>\n$l2 <br/>\n$l3\n</p>\n";
+                                ?>
                             </div>
                             <div class="espLoc"></div>
                             <div id="locMulticine" class="barraLoc"><font id="rMulticine">>></font><font id="lMulticine" style="display: none;"><<</font></div>
                         </div>
                     </div>
                 </div>
+
             </div>
+
             <div style="clear: both; height: 10px;"></div>
             <div style="text-align: center; border: 2px solid #000; font-size: 12px; padding-top: 26px; width: 746px; height: 50px; margin: 0 auto;">PROPAGANDA<br/>750x80</div>
             <div style="clear: both; height: 10px;"></div>
