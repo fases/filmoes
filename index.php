@@ -24,12 +24,12 @@ $content2 = $html2->find('table', 0);
 $contTR2 = 0;
 $contTD2 = 0;
 
-/* $url3 = "http://localhost/filmoes/moviecom.php";
-  $html3 = file_get_html($url3);
+$url3 = "http://localhost/filmoes/cinemark.php";
+$html3 = file_get_html($url3);
 
-  $content3 = $html3->find('table#tabela2');
-  $contTR3 = 0;
-  $contTD3 = 0; */
+$content3 = $html3->find('table', 0);
+$contTR3 = 0;
+$contTD3 = 0;
 ?>
 <html>
     <head>
@@ -45,14 +45,35 @@ $contTD2 = 0;
         <script type='text/javascript' src='js/padrao.js'></script>
     </head>
     <body>
-        <div id="topBg" data-stellar-background-ratio="0.2">
-
-            <div id="faixa">
-                <div><span><a href="#" class="scroll">Alterar Estado</a> • <a href="#" class="scroll">Acessar Painel</a></span></div>
+        <div class="modal">
+            <div id="loginPainel">
+                <div class="fechar">X</div>
+                <h2>Login - Área Restrita</h2>
+                <div id="login">
+                    <form method="post" action="?go=login">
+                        <table id="tableP">
+                            <tr>
+                                <td> <p>Usuário:</p> </td>
+                                <td> <input type="text" name="usuario" id="usuario" class="txt" maxlength="50" required/> </td>
+                            </tr>
+                            <tr>
+                                <td> <p>&nbsp;&nbsp;Senha:</p> </td>
+                                <td> <input type="password" name="senha" id="senha" class="txt" maxlength="50" required/> </td>
+                            </tr>
+                            <tr>
+                                <td> &nbsp; </td>
+                                <td> <input type="submit" value="ENTRAR" class="btn" id="btnEntrar"> </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
             </div>
-
+        </div>
+        <div id="topBg" data-stellar-background-ratio="0.2">
+            <div id="faixa">
+                <div><span><a href="#" class="scroll">Alterar Estado</a> • <a href="#" id="acessarPainel">Acessar Painel</a></span></div>
+            </div>
             <div id="top">
-
                 <div id="topL">
                     <a href="#" class="scroll">
                         <img src="imagens/logo2.png" width="300px"  alt="Filmões"/>
@@ -65,7 +86,7 @@ $contTD2 = 0;
                         <li><a href="#mid" class="scroll">PROGRAMAÇÃO</a></li>
                         <li><a href="#" class="scroll">PREÇO</a></li>
                         <li><a href="#" class="scroll">LOCALIZAÇÃO</a></li>
-                        <li><a href="#" class="scroll">CONTATO</a></li>
+                        <li><a href="contato.php">CONTATO</a></li>
                     </ul>
                 </div>
 
@@ -97,12 +118,114 @@ $contTD2 = 0;
 
                 <h1 style="text-align: center; border-bottom: 3px solid #000; width: 618px;">Programação</h1>
                 <ul>
-                    <li><a href="#" class="scroll"><div>Cinemark<br/>Midway Mall</div></a></li>
+                    <li><a href="#cinemark" class="scroll"><div>Cinemark<br/>Midway Mall</div></a></li>
                     <li><a href="#moviecom" class="scroll"><div style="margin-left: 2px;">Moviecom<br/>Praia Shopping</div></a></li>
                     <li><a href="#natalshopping" class="scroll"><div style="margin-left: 2px;">Cinépolis<br/>Natal Shopping</div></a></li>
                     <li><a href="#norteshopping" class="scroll"><div style="margin-left: 2px;">Cinépolis<br/>Norte Shopping</div></a></li>
                     <li><a href="#multicine" class="scroll"><div style="margin-left: 2px;">Multicine<br/>Partage Mossoró</div></a></li>
                 </ul>
+
+                <div class="cinema" id="cinemark">
+                    <div class="prog">
+                        <h2 style="padding: 0px 0px 5px 30px;">//Cinemark - Midway Mall</h2>
+                        <?php
+                        foreach ($content3->find('tr') as $elemento) {
+                            $filme = '';
+                            $icos = '';
+                            $idade = '';
+                            $sala = '';
+                            $hora = '';
+                            $contTR3 += 1;
+                            foreach ($elemento->find('td') as $a) {
+                                $contTD3 += 1;
+                                $hue = $a->plaintext;
+
+                                if ($contTD3 == '1') {
+                                    $filme = $hue;
+                                }
+                                if ($contTD3 == '2') {
+                                    $hora = $hue;
+
+                                    if (strpos("[" . $filme . "]", " - Livre")) {
+                                        $icos .= "<font class=\"livre\">L</font>";
+                                    }
+
+                                    if (strpos("[" . $filme . "]", " - 10 Anos")) {
+                                        $icos .= "<font class=\"anos10\">10</font>";
+                                    }
+
+                                    if (strpos("[" . $filme . "]", " - 12 Anos")) {
+                                        $icos .= "<font class=\"anos12\">12</font>";
+                                    }
+
+                                    if (strpos("[" . $filme . "]", " - 14 Anos")) {
+                                        $icos .= "<font class=\"anos14\">14</font>";
+                                    }
+
+                                    if (strpos("[" . $filme . "]", " - 16 Anos")) {
+                                        $icos .= "<font class=\"anos16\">16</font>";
+                                    }
+
+                                    if (strpos("[" . $filme . "]", " - 18 Anos")) {
+                                        $icos .= "<font class=\"anos18\">18</font>";
+                                    }
+
+                                    if (strpos("[" . $filme . "]", "(dublado)")) {
+                                        $icos .= "<font class=\"dublado\">DUB</font>";
+                                    }
+
+                                    if (strpos("[" . $filme . "]", " (3D)")) {
+                                        $icos .= "<font class=\"tresd\">3D</font>";
+                                    }
+
+                                    $retirar = array('&nbsp;DIGITAL', '(dublado)', ' (nacional)', ' - Livre', ' - 10 Anos', ' - 12 Anos', ' - 14 Anos', ' - 16 Anos', ' - 18 Anos');
+                                    $filme = str_replace($retirar, '', $filme);
+                                    $hora = str_replace(' - ', ', ', $hora);
+
+                                    echo "<div class=\"film\">\n";
+                                    echo "<p class=\"nomeFilm\">$filme</p>\n";
+                                    echo "<p class=\"icosFilm\">$icos</p>\n";
+                                    echo "<div style=\"clear: both;\"></div>";
+                                    echo "<p class=\"salaFilm\"> -- </p>\n";
+                                    echo "<p class=\"horaFilm\">$hora</p>\n";
+                                    echo "</div>\n";
+                                    $contTD3 = 0;
+                                }
+                            }
+                        }
+                        ?>
+                    </div>
+
+                    <div class="infos">
+                        <div class="preco">
+                            <div class="topPreco"><h3>Preço</h3><p></p></div>
+                            <div id="midPreCinemark" class="midPreco">
+                                <?php
+                                $selecPreco = mysql_fetch_array(mysql_query("SELECT preco FROM cinemas WHERE id = '1'"));
+                                echo "$selecPreco[0]\n";
+                                ?>
+                            </div>
+                            <div class="espLoc"></div>
+                            <div id="preCinemark" class="barraLoc"><font id="rpCinemark">>></font><font id="lpCinemark" style="display: none;"><<</font></div>
+                        </div>
+
+                        <div class="loc">
+                            <div class="topLoc"><h3>Localização</h3><p></p></div>
+                            <div id="midCinemark" class="midLoc">
+                                <?php
+                                $selecLoc = mysql_fetch_array(mysql_query("SELECT * FROM localizacao WHERE idCinema = '1'"));
+                                $mapa = $selecLoc['mapa'];
+                                $l1 = $selecLoc['l1'];
+                                $l2 = $selecLoc['l2'];
+                                $l3 = $selecLoc['l3'];
+                                echo "$mapa\n<p>\n$l1 <br/>\n$l2 <br/>\n$l3\n</p>\n";
+                                ?>
+                            </div>
+                            <div class="espLoc"></div>
+                            <div id="locCinemark" class="barraLoc"><font id="rCinemark">>></font><font id="lCinemark" style="display: none;"><<</font></div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="cinema" id="natalshopping">
                     <div class="prog">
@@ -133,15 +256,12 @@ $contTD2 = 0;
                                     }
                                     if ($contTD1 == '4') {
                                         $hora = $hue;
-                                    }
-                                    if ($contTD1 == '6') {
-                                        $idade = str_replace(' anos', '', $idade);
 
                                         if (strpos("[" . $filme . "]", " (Estreia)")) {
                                             $filme .= " <font class=\"estreia\">ESTREIA</font>";
                                         }
 
-                                        if ($idade == 'Livre') {
+                                        if ($idade == 'L') {
                                             $icos .= "<font class=\"livre\">L</font>";
                                         } else {
                                             $icos .= "<font class=\"anos$idade\">$idade</font>";
@@ -155,19 +275,19 @@ $contTD2 = 0;
                                             $icos .= "<font class=\"nacional\">NAC</font>";
                                         }
 
-                                        if (strpos("[" . $filme . "]", "MacroXE")) {
+                                        if (strpos("[" . $filme . "]", "(Macro XE) - ")) {
                                             $icos .= "<font class=\"macroxe\">Macro XE</font>";
                                         }
 
-                                        if (strpos("[" . $filme . "]", "3D")) {
+                                        if (strpos("[" . $filme . "]", " (3D)")) {
                                             $icos .= "<font class=\"tresd\">3D</font>";
                                         }
 
-                                        if (strpos("[" . $filme . "]", "VIP")) {
+                                        if (strpos("[" . $filme . "]", "VIP - ")) {
                                             $icos .= "<font class=\"vip\">VIP</font>";
                                         }
 
-                                        $retirar = array('Dub. - ', 'Leg. - ', 'MacroXE ', '3D ', ' (Estreia)', 'VIP ');
+                                        $retirar = array('Dub. - ', 'Leg. - ', '(Macro XE) - ', ' (3D)', ' (Estreia)', 'VIP - ');
                                         $filme = str_replace($retirar, '', $filme);
                                         $hora = str_replace($retirar, '', $hora);
 
@@ -196,7 +316,7 @@ $contTD2 = 0;
                                 ?>
                             </div>
                             <div class="espLoc"></div>
-                            <div id="preNatalShopping" class="barraLoc"><font id="rpNatalShopping" style="display: none;">>></font><font id="lpNatalShopping"><<</font></div>
+                            <div id="preNatalShopping" class="barraLoc"><font id="rpNatalShopping">>></font><font id="lpNatalShopping" style="display: none;"><<</font></div>
                         </div>
 
                         <div class="loc">
@@ -247,15 +367,12 @@ $contTD2 = 0;
                                     }
                                     if ($contTD == '4') {
                                         $hora = $hue;
-                                    }
-                                    if ($contTD == '6') {
-                                        $idade = str_replace(' anos', '', $idade);
 
                                         if (strpos("[" . $filme . "]", " (Estreia)")) {
                                             $filme .= " <font class=\"estreia\">ESTREIA</font>";
                                         }
 
-                                        if ($idade == 'Livre') {
+                                        if ($idade == 'L') {
                                             $icos .= "<font class=\"livre\">L</font>";
                                         } else {
                                             $icos .= "<font class=\"anos$idade\">$idade</font>";
@@ -269,19 +386,19 @@ $contTD2 = 0;
                                             $icos .= "<font class=\"nacional\">NAC</font>";
                                         }
 
-                                        if (strpos("[" . $filme . "]", "MacroXE")) {
+                                        if (strpos("[" . $filme . "]", "(Macro XE) - ")) {
                                             $icos .= "<font class=\"macroxe\">Macro XE</font>";
                                         }
 
-                                        if (strpos("[" . $filme . "]", "3D")) {
+                                        if (strpos("[" . $filme . "]", " (3D)")) {
                                             $icos .= "<font class=\"tresd\">3D</font>";
                                         }
 
-                                        if (strpos("[" . $filme . "]", "VIP")) {
+                                        if (strpos("[" . $filme . "]", "VIP - ")) {
                                             $icos .= "<font class=\"vip\">VIP</font>";
                                         }
 
-                                        $retirar = array('Dub. - ', 'Leg. - ', 'MacroXE ', '3D ', ' (Estreia)', 'VIP ');
+                                        $retirar = array('Dub. - ', 'Leg. - ', '(Macro XE) - ', ' (3D)', ' (Estreia)', 'VIP - ');
                                         $filme = str_replace($retirar, '', $filme);
                                         $hora = str_replace($retirar, '', $hora);
 
@@ -310,7 +427,7 @@ $contTD2 = 0;
                                 ?>
                             </div>
                             <div class="espLoc"></div>
-                            <div id="preNorteShopping" class="barraLoc"><font id="rpNorteShopping" style="display: none;">>></font><font id="lpNorteShopping"><<</font></div>
+                            <div id="preNorteShopping" class="barraLoc"><font id="rpNorteShopping">>></font><font id="lpNorteShopping" style="display: none;"><<</font></div>
                         </div>
 
                         <div class="loc">
@@ -413,7 +530,7 @@ $contTD2 = 0;
                                 ?>
                             </div>
                             <div class="espLoc"></div>
-                            <div id="preMulticine" class="barraLoc"><font id="rpMulticine" style="display: none;">>></font><font id="lpMulticine"><<</font></div>
+                            <div id="preMulticine" class="barraLoc"><font id="rpMulticine">>></font><font id="lpMulticine" style="display: none;"><<</font></div>
                         </div>
 
                         <div class="loc">
@@ -449,4 +566,35 @@ $contTD2 = 0;
 
         <a href="#topBg" class="scroll" id="subir" style="display: none;"><div id="subirDiv"><div><</div></div></a>
     </body>
+    <?php
+    if (@$_GET['go'] == 'login') {
+        session_start();
+
+        $usuario = $_POST['usuario'];
+        $senha = $_POST['senha'];
+        $senhaEncode = base64_encode($senha);
+        $ok = mysql_num_rows(mysql_query("SELECT * FROM usuarios WHERE login = '$usuario' AND senha = '$senhaEncode'"));
+
+        if ($ok == 1) {
+            //Criando a sessão com o NOME DO USUÁRIO
+            $nomeUsuario = mysql_query("SELECT nome FROM usuarios WHERE login = '$usuario'");
+            $hue = mysql_fetch_row($nomeUsuario);
+            $nomeUser = $hue[0];
+            $_SESSION['nome'] = $nomeUser;
+
+            //Criando sessão com a PERMISSÃO DO USUÁRIO
+            $permissao = mysql_query("SELECT per FROM usuarios WHERE login = '$usuario'");
+            $row = mysql_fetch_row($permissao);
+            $_SESSION['permissao'] = $row[0];
+
+            //Criando sessão com LOGIN
+            $_SESSION ['usuario'] = $usuario;
+
+            //Redirecionando para PAINEL
+            echo "<meta http-equiv='refresh' content='0, url=painel.php'>";
+        } else {
+            echo "<script>alert('Usuário e senha não correspondem.'); history.back();</script>";
+        }
+    }
+    ?>
 </html>

@@ -1,0 +1,339 @@
+@font-face {
+    font-family: "Oswald";
+    src: url("Oswald-Regular.ttf") format("truetype");
+}
+
+*{
+    margin: 0px;
+    border: 0px;
+    padding: 0px;
+    font-family: Oswald, sans-serif;
+}
+
+body{
+    overflow-y: scroll;
+}
+
+#subir{
+    text-decoration: none;
+    font-size: 20px;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    color: #ff6200;
+}
+
+#subirDiv{
+    padding: 0px 10px 0px 14px;
+    background-color: #000;
+    -webkit-transition: 0.2s linear;
+    -moz-transition: 0.2s linear;
+    -o-transition: 0.2s linear;
+    transition: 0.2s linear;
+}
+
+#subirDiv:hover{
+    color: #fff;
+}
+
+#subirDiv div{
+    text-align: center;
+    -ms-transform: rotate(90deg);
+    -webkit-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+/* ============================================================================= TOP */
+
+/* ====================================== FAIXA */
+
+#topBg{
+    background: url(../imagens/bg4.jpg) no-repeat;
+    background-attachment: fixed;
+}
+
+#faixa{
+    height: 20px;
+    background-color: #ed6511;
+}
+
+#faixa div{
+    width: 950px;
+    margin: 0 auto;
+}
+
+#faixa div span{
+    margin-top: -2px;
+    float: right;
+}
+
+#faixa div span a{
+    text-decoration: none;
+    color: #000;
+    font-size: 13px;
+}
+
+#faixa div span a:hover{
+    text-decoration: underline;
+}
+
+/* ====================================== LOGO */
+
+#top{
+    width: 950px;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+#topL{
+    margin-left: 40px;
+    float: left;
+}
+
+/* ====================================== MENU + ESTADO */
+
+#topR{
+    margin-top: 80px;
+    float: right;
+}
+
+#topR p{
+    margin-top: -30px;
+    float: right;
+    margin-right: 100px;
+}
+
+#topR ul{
+    clear: both;
+    margin-right: 40px;
+    list-style: none;
+}
+
+#topR ul li{
+    float: left;
+}
+
+#topR ul li a{
+    border-top: 3px solid #000;
+    font-size: 18px;
+    text-decoration: none;
+    padding: 10px 20px 10px 20px;
+    color: #000;
+
+    -webkit-transition: 0.2s ease-out;
+    -moz-transition: 0.2s ease-out;
+    -o-transition: 0.2s ease-out;
+    transition: 0.2s ease-out;
+}
+
+#topR ul li a:hover{
+    color: #ff6200;
+}
+
+/* ====================================== SLIDE */
+
+#boxBg{
+    padding-top: 40px;
+    clear: both;
+}
+
+#box{
+    width: 950px;
+    height: 340px;
+    border-top: 2px solid #ff6200;
+    margin: 0 auto;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.prev, .next{
+    position: absolute; 
+    top: 0;
+    width: 65px;
+    opacity: .0;
+    filter: alpha(opacity=0);
+    z-index: 800;
+    height: 100%;
+    cursor: pointer;
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.prev{
+    left: 0;  
+}
+
+.prev:hover{
+    background: url(../imagens/slide/left.png) no-repeat;
+}
+
+.next{
+    right: 0; 
+}
+
+.next:hover{
+    background: url(../imagens/slide/right.png) no-repeat;
+}
+
+.prev:hover, .next:hover{
+    opacity: .5;
+    filter: alpha(opacity=50);
+
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+
+
+/* ============================================================================= MID */
+
+#midBg{
+    background: url(../imagens/bg5.jpg) repeat-y;
+    background-attachment: fixed;
+    -webkit-box-shadow: inset 0px 20px 30px -20px rgba(50, 50, 50, 0.4);
+    -moz-box-shadow: inset 0px 20px 30px -20px rgba(50, 50, 50, 0.4);
+    box-shadow: inset 0px 20px 30px -20px rgba(50, 50, 50, 0.4);
+}
+
+#mid{
+    width: 950px;
+    margin: 0 auto;
+    padding-top: 15px;
+}
+
+/* ====================================== CONTATO */
+
+#mid h1{
+    font-size: 30px;
+    text-align: center;
+}
+
+#entreEmContato{
+    padding-bottom: 5px;
+    padding-top: 10px;
+    padding-left: 70px;
+    font-size: 20px;
+}
+
+#entreEmContato font{
+    font-size: 22px;
+}
+
+#formGeral{
+    padding: 20px 30px 20px 30px;
+    height: 250px;
+    width: 770px;
+    margin: 0 auto;
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+#formLeft{
+    height: 100%;
+    width: 385px;
+    float: left;
+}
+
+#formRight{
+    height: 100%;
+    width: 385px;
+    float: right;
+}
+
+#formGeral p{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 0 0 5px 10px;
+}
+
+.txt{
+    padding: 1px 10px 1px 10px;
+    margin-bottom: 15px;
+    height: 25px;
+    width: 350px;
+    border: #999999 solid 1px;
+    background-color: rgba(255, 255, 255, 0.5);
+
+    -webkit-transition: 0.1s linear;
+    -moz-transition: 0.1s linear;
+    -o-transition: 0.1s linear;
+    transition: 0.1s linear;
+}
+
+.txt:hover{
+    border: #777 solid 1px;
+}
+
+.txt:focus{
+    outline: none;
+    border: #777 solid 1px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.bot{
+    font-size: 12px;
+    border: #999999 solid 1px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 6px 15px 6px 15px;
+    background-color: rgba(255, 255, 255, 0.5);
+    float: right;
+    margin-right: 30px;
+
+    -webkit-transition: 0.03s ease-in-out;
+    -moz-transition: 0.03s ease-in-out;
+    -o-transition: 0.03s ease-in-out;
+    transition: 0.03s ease-in-out;
+}
+
+.bot:focus, .bot:hover{
+    outline: none;
+    border: #333 solid 1px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+#formGeral textarea{
+    padding-top: 6px;
+    padding-bottom: 6px;
+    resize: none;
+    height: 85px;
+}
+
+#map{
+    width: 830px;
+    margin: 0 auto;
+}
+
+#map p{
+    text-align: right;
+    padding-right: 20px;
+    font-size: 14px;
+}
+
+
+/* ============================================================================= BOT */
+
+#botBg{
+    border-top: 2px solid #fff;
+    height: 300px;
+    background-color: #000;
+    width: 100%;
+}
+
+#bot p{
+    font-size: 13px;
+    padding-top: 137px;
+    color: #ff6200;
+    text-align: center;
+}
+
+#bot p a, #bot p a:hover font{
+    color: #ff6200;
+    text-decoration: none;
+}
+
+#bot p a font, #bot p a:hover{
+    color: red;
+}

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 09-Dez-2015 às 13:07
+-- Generation Time: 17-Fev-2016 às 11:23
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -60,10 +60,10 @@ CREATE TABLE IF NOT EXISTS `cinemas` (
 --
 
 INSERT INTO `cinemas` (`id`, `nome`, `preco`) VALUES
-(1, 'Cinemark - Midway Mall', ''),
+(1, 'Cinemark - Midway Mall', '<p><font class="t1"> Salas Tradicionais </font> <br/> \nSeg., ter. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">M</font> e R$ 20,00 <font class="hIco">N</font> <br/> \nQua. <font class="hIco">EF</font>: R$ 18,00 <font class="hIco">TD</font> <br/> \nQui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">M</font> e R$ 25,00 <font class="hIco">N</font> <br/> </p> \n<p> <font class="t1"> Salas 3D </font> <br/> \nSeg., ter. <font class="hIco">EF</font>: R$ 26,00 <font class="hIco">TD</font> <br/> \nQua. <font class="hIco">EF</font>: R$ 25,00 <font class="hIco">TD</font> <br/> \nQui., sex., sáb., dom. e feriado: R$ 31,00 <font class="hIco">TD</font> <br/> </p> \n<p> <font class="t1"> Salas D-BOX </font> <br/> \nSeg., ter. <font class="hIco">EF</font>: R$ 37,00 <font class="hIco">M</font> e R$ 40,00 <font class="hIco">N</font> <br/> \nQua. <font class="hIco">EF</font>: R$ 38,00 <font class="hIco">TD</font> <br/> \nQui., sex., sáb., dom. e feriado: R$ 42,00 <font class="hIco">M</font> e R$ 45,00 <font class="hIco">N</font> <br/> </p> \n<p> <font class="t1"> Salas 3D D-BOX</font> <br/>\nSeg., ter. <font class="hIco">EF</font>: R$ 46,00 <font class="hIco">TD</font> <br/> \nQua. <font class="hIco">EF</font>: R$ 45,00 <font class="hIco">TD</font> <br/> \nQui., sex., sáb., dom. e feriado: R$ 51,00 <font class="hIco">TD</font> <br/> </p>\n\n<p><font class="hIco">OBS</font>: Matinê são todas as sessões iniciadas até 17h <br/> <font class="hIco">EF</font>: Exceto Feriado <br/> <font class="hIco">TD</font>: Todo o Dia <br/> <font class="hIco">M</font>: Matinê <br/> <font class="hIco">N</font>: Noite </p>'),
 (2, 'Moviecom - Praia Shopping', ''),
 (3, 'Cinépolis - Natal Shopping', '<p><font class="t1"> Salas Tradicionais </font> <br/> Seg., ter. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">M</font> e R$ 20,00 <font class="hIco">N</font> <br/> Qua. (exceto fer.): R$ 18,00 <font class="hIco">TD</font> <br/> Qui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">M</font> e R$ 25,00 <font class="hIco">N</font> <br/> </p> <p> <font class="t1"> Salas 3D </font> <br/> Seg., ter. <font class="hIco">EF</font>: R$ 26,00 <font class="hIco">TD</font> <br/> Qua. <font class="hIco">EF</font>: R$ 25,00 <font class="hIco">TD</font> <br/> Qui., sex., sáb., dom. e feriado: R$ 31,00 <font class="hIco">TD</font> <br/> </p> <p> <font class="t1"> Salas VIP </font> <br/> Seg., ter. <font class="hIco">EF</font>: R$ 33,00 <font class="hIco">TD</font> <br/> Qua. <font class="hIco">EF</font>: R$ 31,00 <font class="hIco">TD</font> <br/> Qui., sex., sáb., dom. e feriado: R$ 42,00 <font class="hIco">TD</font> <br/> </p> <p> <font class="t1"> Salas VIP 3D</font> <br/> Seg., ter. <font class="hIco">EF</font>: R$ 39,00 <font class="hIco">TD</font> <br/> Qua. <font class="hIco">EF</font>: R$ 37,00 <font class="hIco">TD</font> <br/> Qui., sex., sáb., dom. e feriado: R$ 45,00 <font class="hIco">TD</font> <br/> </p> <p> <font class="t1"> Salas Macro XE Tradicionais </font> <br/> Seg., ter. <font class="hIco">EF</font>: R$ 20,00 <font class="hIco">M</font> e R$ 23,00 <font class="hIco">N</font> <br/> Qua. <font class="hIco">EF</font>: R$ 21,00 <font class="hIco">TD</font> <br/> Qui., sex., sáb., dom. e feriado: R$ 25,00 <font class="hIco">M</font> e R$ 28,00 <font class="hIco">N</font> <br/>  </p> <p> <font class="t1">Salas Macro XE 3D</font> <br/> Seg., ter. <font class="hIco">EF</font>: R$ 29,00 <font class="hIco">TD</font> <br/> Qua. <font class="hIco">EF</font>: R$ 28,00 <font class="hIco">TD</font> <br/> Qui., sex., sáb., dom. e feriado: R$ 34,00 <font class="hIco">TD</font> <br/> </p> <p>\n <font class="hIco">OBS</font>: Matinê são todas as sessões iniciadas até 16h55 <br/> <font class="hIco">EF</font>: Exceto Feriado <br/> <font class="hIco">TD</font>: Todo o Dia <br/> <font class="hIco">M</font>: Matinê <br/> <font class="hIco">N</font>: Noite </p>'),
-(4, 'Cinépolis - Norte Shopping', '<p> <font class="t1"> Salas Tradicionais </font> <br/> Seg., ter., qua. <font class="hIco">EF</font>: R$ 13,00 <font class="hIco">M</font> e R$ 15,00 <font class="hIco">N</font> Qui., sex., sáb., dom. e feriado: R$ 17,00 <font class="hIco">M</font> e R$ 19,00 <font class="hIco">N</font> </p> <p> <font class="t1"> Salas 3D </font> <br/> Seg., ter., qua. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">TD</font> Qui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">TD</font> </p> <p> <font class="t1"> Salas Macro XE Tradicionais </font> <br/> Seg., ter., qua. <font class="hIco">EF</font>: R$ 13,00 <font class="hIco">M</font> e R$ 15,00 <font class="hIco">N</font> Qui., sex., sáb., dom. e feriado: R$ 17,00 <font class="hIco">M</font> e R$ 19,00 <font class="hIco">N</font> </p> <p> <font class="t1"> Salas Macro XE 3D </font> <br/> Seg., ter., qua. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">TD</font> Qui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">TD</font> </p> <p> <font class="hIco">OBS</font>: Matinê são todas as sessões iniciadas até 16h55 <br/> <font class="hIco">EF</font>: Exceto Feriado <br/> <font class="hIco">TD</font>: Todo o Dia <br/> <font class="hIco">M</font>: Matinê <br/> <font class="hIco">N</font>: Noite </p>'),
+(4, 'Cinépolis - Norte Shopping', '<p> <font class="t1"> Salas Tradicionais </font> <br/> \nSeg., ter., qua. <font class="hIco">EF</font>: R$ 13,00 <font class="hIco">M</font> e R$ 15,00 <font class="hIco">N</font> <br/>\nQui., sex., sáb., dom. e feriado: R$ 17,00 <font class="hIco">M</font> e R$ 19,00 <font class="hIco">N</font> <br/> </p> \n<p> <font class="t1"> Salas 3D </font> <br/> \nSeg., ter., qua. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">TD</font> <br/>\nQui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">TD</font> <br/> </p> \n<p> <font class="t1"> Salas Macro XE Tradicionais </font> <br/> \nSeg., ter., qua. <font class="hIco">EF</font>: R$ 13,00 <font class="hIco">M</font> e R$ 15,00 <font class="hIco">N</font> <br/>\nQui., sex., sáb., dom. e feriado: R$ 17,00 <font class="hIco">M</font> e R$ 19,00 <font class="hIco">N</font> <br/> </p> \n<p> <font class="t1"> Salas Macro XE 3D </font> <br/> \nSeg., ter., qua. <font class="hIco">EF</font>: R$ 17,00 <font class="hIco">TD</font> <br/>\nQui., sex., sáb., dom. e feriado: R$ 22,00 <font class="hIco">TD</font> <br/> </p> \n<p> <font class="hIco">OBS</font>: Matinê são todas as sessões iniciadas até 16h55 <br/> <font class="hIco">EF</font>: Exceto Feriado <br/> <font class="hIco">TD</font>: Todo o Dia <br/> <font class="hIco">M</font>: Matinê <br/> <font class="hIco">N</font>: Noite </p>'),
 (5, 'Multicine - Partage Mossoró', '<p>Não há tabela de preços disponível!</p>');
 
 -- --------------------------------------------------------
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS `localizacao` (
   `mapa` varchar(500) NOT NULL,
   PRIMARY KEY (`id`),
   KEY `idCinema` (`idCinema`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
 
 --
 -- Extraindo dados da tabela `localizacao`
@@ -90,7 +90,8 @@ CREATE TABLE IF NOT EXISTS `localizacao` (
 INSERT INTO `localizacao` (`id`, `idCinema`, `l1`, `l2`, `l3`, `mapa`) VALUES
 (1, 3, 'Avenida Senador Salgado Filho, 2234', 'Loja 400 – Piso L2 – Candelária', 'Natal - RN', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.0957190284266!2d-35.2134393852327!3d-5.842131895767035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2ff7f174cbe21%3A0x2dca4e1d5201607!2sCin%C3%A9polis!5e0!3m2!1spt-BR!2sbr!4v1447375115106" frameborder="0" allowfullscreen></iframe>'),
 (2, 4, 'Av Doutor Medeiros Filho, 2395', 'Loja 230A – Bairro Potengi', 'Natal - RN', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.6901799849184!2d-35.2492955852332!3d-5.757655095827385!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b3aa4484175c1d%3A0x7c50cdd1371fb131!2sPartage+Norte+Shopping+Natal!5e0!3m2!1spt-BR!2sbr!4v1447375528809" frameborder="0" allowfullscreen></iframe>'),
-(3, 5, 'Avenida João da Escóssia, 1515', 'Partage Shopping Mossoró – Nova Betânia', 'Mossoró - RN', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.5744210714593!2d-37.379404785235806!3d-5.171942296246965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ba06ac1d109887%3A0xb8ce6a76107ec05c!2sMulticine+Cinemas!5e0!3m2!1spt-BR!2sbr!4v1447680431271" frameborder="0" allowfullscreen></iframe>');
+(3, 5, 'Avenida João da Escóssia, 1515', 'Partage Shopping Mossoró – Nova Betânia', 'Mossoró - RN', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.5744210714593!2d-37.379404785235806!3d-5.171942296246965!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7ba06ac1d109887%3A0xb8ce6a76107ec05c!2sMulticine+Cinemas!5e0!3m2!1spt-BR!2sbr!4v1447680431271" frameborder="0" allowfullscreen></iframe>'),
+(4, 1, 'Av. Bernardo Vieira, 3775', 'Área de Cinemas - Tirol', 'Natal - RN', '<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3969.3103456588947!2d-35.208507385232885!3d-5.811773195788654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7b2fffa55a2be71%3A0xebf15047f9f8e07c!2sMidway+Mall!5e0!3m2!1spt-BR!2sbr!4v1455694667326" frameborder="0" allowfullscreen></iframe>');
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,7 @@ INSERT INTO `slide` (`id`, `url`, `texto`, `ativo`) VALUES
 
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `nome` varchar(200) NOT NULL,
+  `nome` varchar(100) NOT NULL,
   `login` varchar(100) NOT NULL,
   `senha` varchar(100) NOT NULL,
   `per` int(2) NOT NULL,
@@ -154,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`, `per`) VALUES
-(1, 'QWRtaW5pc3RyYWRvcg==', 'YWRtaW4=', 'YWRtaW4=', 9);
+(1, 'Administrador', 'Admin', 'YWRtaW4=', 9);
 
 --
 -- Constraints for dumped tables

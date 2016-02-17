@@ -1,4 +1,4 @@
-$(function() {
+$(function () {
     $("#box").cycle({
         fx: 'fade',
         speed: 1000,
@@ -7,8 +7,8 @@ $(function() {
         next: '#prox'
     });
 
-    $(window).scroll(function() {
-        if ($(this).scrollTop() > $('#midBg').offset().top) {
+    $(window).scroll(function () {
+        if ($(this).scrollTop() >= $('#midBg').offset().top) {
             $('#subir').fadeIn(300);
         } else {
             $('#subir').fadeOut(300);
@@ -16,10 +16,10 @@ $(function() {
     });
 });
 
-$(document).ready(function() {
+$(document).ready(function () {
     $(window).stellar();
 
-    $(".scroll").click(function(event) {
+    $(".scroll").click(function (event) {
         event.preventDefault();
         $('html,body').animate({scrollTop: $(this.hash).offset().top}, 1500);
     });
@@ -27,11 +27,13 @@ $(document).ready(function() {
     var cont1 = 1;
     var cont2 = 1;
     var cont3 = 1;
-    var hue1 = 2;
-    var hue2 = 2;
-    var hue3 = 2;
+    var cont4 = 1;
+    var hue1 = 1;
+    var hue2 = 1;
+    var hue3 = 1;
+    var hue4 = 1;
 
-    $('#locNorteShopping').click(function(e) {
+    $('#locNorteShopping').click(function (e) {
         e.preventDefault();
         if (cont1 % 2 == 0) {
             $('#midNorteShopping').slideUp(1000);
@@ -45,7 +47,7 @@ $(document).ready(function() {
         cont1++;
     });
 
-    $('#locNatalShopping').click(function(e) {
+    $('#locNatalShopping').click(function (e) {
         e.preventDefault();
         if (cont2 % 2 == 0) {
             $('#midNatalShopping').slideUp(1000);
@@ -59,7 +61,7 @@ $(document).ready(function() {
         cont2++;
     });
 
-    $('#locMulticine').click(function(e) {
+    $('#locMulticine').click(function (e) {
         e.preventDefault();
         if (cont3 % 2 == 0) {
             $('#midMulticine').slideUp(1000);
@@ -73,7 +75,21 @@ $(document).ready(function() {
         cont3++;
     });
 
-    $('#preNorteShopping').click(function(e) {
+    $('#locCinemark').click(function (e) {
+        e.preventDefault();
+        if (cont4 % 2 == 0) {
+            $('#midCinemark').slideUp(1000);
+            $("#lCinemark").fadeOut(500);
+            $("#rCinemark").fadeIn(500);
+        } else {
+            $('#midCinemark').slideDown(1000);
+            $("#lCinemark").fadeIn(500);
+            $("#rCinemark").fadeOut(500);
+        }
+        cont4++;
+    });
+
+    $('#preNorteShopping').click(function (e) {
         e.preventDefault();
         if (hue1 % 2 == 0) {
             $('#midPreNorteShopping').slideUp(1000);
@@ -87,7 +103,7 @@ $(document).ready(function() {
         hue1++;
     });
 
-    $('#preNatalShopping').click(function(e) {
+    $('#preNatalShopping').click(function (e) {
         e.preventDefault();
         if (hue2 % 2 == 0) {
             $('#midPreNatalShopping').slideUp(1000);
@@ -101,7 +117,7 @@ $(document).ready(function() {
         hue2++;
     });
 
-    $('#preMulticine').click(function(e) {
+    $('#preMulticine').click(function (e) {
         e.preventDefault();
         if (hue3 % 2 == 0) {
             $('#midPreMulticine').slideUp(1000);
@@ -113,5 +129,35 @@ $(document).ready(function() {
             $("#rpMulticine").fadeOut(500);
         }
         hue3++;
+    });
+
+    $('#preCinemark').click(function (e) {
+        e.preventDefault();
+        if (hue4 % 2 == 0) {
+            $('#midPreCinemark').slideUp(1000);
+            $("#lpCinemark").fadeOut(500);
+            $("#rpCinemark").fadeIn(500);
+        } else {
+            $('#midPreCinemark').slideDown(1000);
+            $("#lpCinemark").fadeIn(500);
+            $("#rpCinemark").fadeOut(500);
+        }
+        hue4++;
+    });
+});
+
+$(document).ready(function () {
+    $('#acessarPainel').click(function (e) {
+        e.preventDefault();
+        $('.modal').fadeIn(500);
+        $('#loginPainel').fadeIn(500);
+        document.getElementById('usuario').focus();
+    });
+
+    $('.modal, .fechar').click(function (e) {
+        if (e.target !== this)
+            return;
+        $('.modal').fadeOut(500);
+        $('#loginPainel').fadeOut(500);
     });
 });
