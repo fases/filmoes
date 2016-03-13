@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 17-Fev-2016 às 11:23
+-- Generation Time: 13-Mar-2016 às 03:45
 -- Versão do servidor: 5.6.17
 -- PHP Version: 5.5.12
 
@@ -69,6 +69,36 @@ INSERT INTO `cinemas` (`id`, `nome`, `preco`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `email`
+--
+
+CREATE TABLE IF NOT EXISTS `email` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `idCli` int(11) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `ativo` int(1) NOT NULL,
+  `dDom` int(1) NOT NULL,
+  `dSeg` int(1) NOT NULL,
+  `dTer` int(1) NOT NULL,
+  `dQua` int(1) NOT NULL,
+  `dQui` int(1) NOT NULL,
+  `dSex` int(1) NOT NULL,
+  `dSab` int(1) NOT NULL,
+  `cCinemark` int(1) NOT NULL,
+  `cCinepolisZS` int(1) NOT NULL,
+  `cCinepolisZN` int(1) NOT NULL,
+  `cMoviecom` int(1) NOT NULL,
+  `cMulticine` int(1) NOT NULL,
+  `preco` int(1) NOT NULL,
+  `infos` int(1) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `idCli` (`idCli`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `localizacao`
 --
 
@@ -101,14 +131,30 @@ INSERT INTO `localizacao` (`id`, `idCinema`, `l1`, `l2`, `l3`, `mapa`) VALUES
 
 CREATE TABLE IF NOT EXISTS `propaganda` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `urlImg` varchar(500) NOT NULL,
-  `texto` varchar(3000) NOT NULL,
-  `usuario` int(2) NOT NULL,
+  `idCli` int(11) NOT NULL,
+  `img1` varchar(2000) NOT NULL,
+  `img2` varchar(2000) NOT NULL,
+  `link` varchar(2000) NOT NULL,
+  `inicio` date NOT NULL,
+  `fim` date NOT NULL,
+  `valor` varchar(20) NOT NULL,
   `loc` int(2) NOT NULL,
   `ativo` int(2) NOT NULL,
   PRIMARY KEY (`id`),
-  KEY `propaganda_ibfk_1` (`usuario`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+  KEY `propaganda_ibfk_1` (`idCli`),
+  KEY `idCli` (`idCli`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
+
+--
+-- Extraindo dados da tabela `propaganda`
+--
+
+INSERT INTO `propaganda` (`id`, `idCli`, `img1`, `img2`, `link`, `inicio`, `fim`, `valor`, `loc`, `ativo`) VALUES
+(1, 1, 'teste1.jpg', 'teste2.jpg', 'http://google.com.br', '2016-03-07', '2016-03-14', '', 1, 1),
+(2, 1, 'teste1.png', 'teste2.png', 'http://pdsgroup.com.br', '2016-03-07', '2016-03-14', '', 2, 0),
+(3, 1, 'teste1.jpg', 'teste2.jpg', 'http://google.com.br', '2016-03-07', '2016-03-14', '', 3, 1),
+(4, 1, 'teste1.jpg', 'teste2.jpg', 'http://google.com.br', '2016-03-07', '2016-03-14', '', 4, 1),
+(5, 1, 'teste1.png', 'teste2.png', 'http://pdsgroup.com.br', '2016-03-07', '2016-03-14', '', 5, 0);
 
 -- --------------------------------------------------------
 
@@ -144,22 +190,33 @@ INSERT INTO `slide` (`id`, `url`, `texto`, `ativo`) VALUES
 CREATE TABLE IF NOT EXISTS `usuarios` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
-  `login` varchar(100) NOT NULL,
-  `senha` varchar(100) NOT NULL,
+  `razaoSocial` varchar(100) NOT NULL,
+  `cad` varchar(14) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `login` varchar(50) NOT NULL,
+  `senha` varchar(400) NOT NULL,
   `per` int(2) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `email` (`email`),
+  KEY `nome` (`nome`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 --
 -- Extraindo dados da tabela `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `nome`, `login`, `senha`, `per`) VALUES
-(1, 'Administrador', 'Admin', 'YWRtaW4=', 9);
+INSERT INTO `usuarios` (`id`, `nome`, `razaoSocial`, `cad`, `email`, `login`, `senha`, `per`) VALUES
+(1, 'Administrador', '', '', '', 'Admin', 'YWRtaW4=', 0);
 
 --
 -- Constraints for dumped tables
 --
+
+--
+-- Limitadores para a tabela `email`
+--
+ALTER TABLE `email`
+  ADD CONSTRAINT `email_ibfk_1` FOREIGN KEY (`idCli`) REFERENCES `usuarios` (`id`);
 
 --
 -- Limitadores para a tabela `localizacao`
@@ -171,7 +228,7 @@ ALTER TABLE `localizacao`
 -- Limitadores para a tabela `propaganda`
 --
 ALTER TABLE `propaganda`
-  ADD CONSTRAINT `propaganda_ibfk_1` FOREIGN KEY (`usuario`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+  ADD CONSTRAINT `propaganda_ibfk_1` FOREIGN KEY (`idCli`) REFERENCES `usuarios` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

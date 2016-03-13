@@ -1,5 +1,5 @@
-<!DOCTYPE html>
 <?php
+session_start();
 include "config.php";
 include "simple_html_dom.php";
 
@@ -30,7 +30,46 @@ $html3 = file_get_html($url3);
 $content3 = $html3->find('table', 0);
 $contTR3 = 0;
 $contTD3 = 0;
+
+$selecProp1 = mysql_fetch_array(mysql_query("SELECT img1, link FROM propaganda WHERE ativo = '0' and loc='1'"));
+$img1Prop1 = $selecProp1['img1'];
+$linkProp1 = $selecProp1['link'];
+
+$selecProp2 = mysql_fetch_array(mysql_query("SELECT img1, link FROM propaganda WHERE ativo = '0' and loc='2'"));
+$img1Prop2 = $selecProp2['img1'];
+$linkProp2 = $selecProp2['link'];
+
+$selecProp3 = mysql_fetch_array(mysql_query("SELECT img1, link FROM propaganda WHERE ativo = '0' and loc='3'"));
+$img1Prop3 = $selecProp3['img1'];
+$linkProp3 = $selecProp3['link'];
+
+$selecProp4 = mysql_fetch_array(mysql_query("SELECT img1, link FROM propaganda WHERE ativo = '0' and loc='4'"));
+$img1Prop4 = $selecProp4['img1'];
+$linkProp4 = $selecProp4['link'];
+
+$selecProp5 = mysql_fetch_array(mysql_query("SELECT img1, img2, link FROM propaganda WHERE ativo = '0' and loc='5'"));
+$img1Prop5 = $selecProp5['img1'];
+$img2Prop5 = $selecProp5['img2'];
+$linkProp5 = $selecProp5['link'];
+
+if(empty($img1Prop1)){
+    $img1Prop1 = 'off11.gif';
+}
+if(empty($img1Prop2)){
+    $img1Prop2 = 'off12.gif';
+}
+if(empty($img1Prop3)){
+    $img1Prop3 = 'off11.gif';
+}
+if(empty($img1Prop4)){
+    $img1Prop4 = 'off12.gif';
+}
+if(empty($img1Prop5)){
+    $img1Prop5 = 'off11.gif';
+    $img2Prop5 = 'off21.gif';
+}
 ?>
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -43,6 +82,30 @@ $contTD3 = 0;
         <script type='text/javascript' src='js/jquery.cycle2.js'></script>
         <script type='text/javascript' src='js/jquery.stellar.js'></script>
         <script type='text/javascript' src='js/padrao.js'></script>
+        <style>
+            #prop1{
+                background-image: <?php echo "url(\"imagens/propaganda/$img1Prop1\")" ?>;
+            }
+            #prop2{
+                background-image: <?php echo "url(\"imagens/propaganda/$img1Prop2\")" ?>;
+            }
+            #prop3{
+                background-image: <?php echo "url(\"imagens/propaganda/$img1Prop3\")" ?>;
+            }
+            #prop4{
+                background-image: <?php echo "url(\"imagens/propaganda/$img1Prop4\")" ?>;
+            }
+            @media (max-width: 991px){
+                #prop5{
+                    background-image: <?php echo "url(\"imagens/propaganda/$img1Prop5\")" ?>;
+                }
+            }
+            @media (min-width: 992px){
+                #prop5{
+                    background-image: <?php echo "url(\"imagens/propaganda/$img2Prop5\")" ?>;
+                }
+            }
+        </style>
     </head>
     <body>
         <div class="modal">
@@ -68,10 +131,60 @@ $contTD3 = 0;
                     </form>
                 </div>
             </div>
+            <div id="cadastro">
+                <div class="fechar">X</div>
+                <h2>Cadastro</h2>
+                <div id="cadCli">
+                    <form method="post" action="?go=cadastro" onsubmit="return validacao();">
+                        <div id="divTipoCad">
+                            <input type="radio" name="tipoCad" id="tipoCad1" value="1" checked="checked" onclick="emails();" /> Receber e-mails com novidades
+                            <input style="margin-left: 10px;" type="radio" name="tipoCad" id="tipoCad2" value="2" onclick="propaganda();" /> Fazer propaganda no site <br />
+                        </div>
+                        <div id="divCad">
+                            <input type="radio" name="pfj" id="pfjCNPJ" value="1" checked="checked" onclick="CNPJ();" /> Pessoa Jurídica
+                            <input style="margin-left: 10px;" type="radio" name="pfj" id="pfjCPF" value="2" onclick="CPF();" /> Pessoa Física <br />
+                        </div>
+                        <table id="tableP">
+                            <tr>
+                                <td> <p>Nome:</p> </td>
+                                <td> <input type="text" name="nomeCad" id="nomeCad" class="txt2" maxlength="100" required/> </td>
+                            </tr>
+                            <tr id="trRazao" style="display: none;">
+                                <td> <p>Razão Social:</p> </td>
+                                <td> <input type="text" name="razaoCad" id="razaoCad" class="txt2" maxlength="100"/> </td>
+                            </tr>
+                            <tr id="trCad" style="display: none;">
+                                <td> <p id="nomeTipoCad">CNPJ:</p> </td>
+                                <td> <input type="text" name="cadCad" id="cadCad" class="txt2" maxlength="14"/> </td>
+                            </tr>
+                            <tr>
+                                <td> <p>E-mail:</p> </td>
+                                <td> <input type="email" name="emailCad" id="emailCad" class="txt2" maxlength="150" required/> </td>
+                            </tr>
+                            <tr>
+                                <td> <p>Usuário:</p> </td>
+                                <td> <input type="text" name="usuarioCad" id="usuarioCad" class="txt2" maxlength="50" required/> </td>
+                            </tr>
+                            <tr>
+                                <td> <p>Senha:</p> </td>
+                                <td> <input type="password" name="senhaCad1" id="senhaCad1" class="txt2" maxlength="50" required/> </td>
+                            </tr>
+                            <tr>
+                                <td> <p>Confirmar senha:</p> </td>
+                                <td> <input type="password" name="senhaCad2" id="senhaCad2" class="txt2" maxlength="50" required/> </td>
+                            </tr>
+                            <tr>
+                                <td> &nbsp; </td>
+                                <td> <input type="submit" value="CADASTRAR" class="btn" id="btnCadastrar"> </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
         </div>
         <div id="topBg" data-stellar-background-ratio="0.2">
             <div id="faixa">
-                <div><span><a href="#" class="scroll">Alterar Estado</a> • <a href="#" id="acessarPainel">Acessar Painel</a></span></div>
+                <div><span><a href="#" class="scroll">Alterar Estado</a> • <a href="#" id="acessarPainel">Login</a></span></div>
             </div>
             <div id="top">
                 <div id="topL">
@@ -84,9 +197,9 @@ $contTD3 = 0;
                     <p>Rio Grande do Norte</p>
                     <ul>
                         <li><a href="#mid" class="scroll">PROGRAMAÇÃO</a></li>
-                        <li><a href="#" class="scroll">PREÇO</a></li>
-                        <li><a href="#" class="scroll">LOCALIZAÇÃO</a></li>
                         <li><a href="contato.php">CONTATO</a></li>
+                        <li><a style="cursor: default;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="#" id="btnCadastro" style="color: #ff6200;">CADASTRE-SE</a></li>
                     </ul>
                 </div>
 
@@ -106,7 +219,6 @@ $contTD3 = 0;
                             <img src="imagens/slide/1.jpg">
                             <img src="imagens/slide/2.jpg">
                             <img src="imagens/slide/3.jpg">
-                            <img src="imagens/slide/4.jpg">
                         </div>
                     </div>
                 </div>
@@ -116,7 +228,7 @@ $contTD3 = 0;
         <div id="midBg" data-stellar-background-ratio="0.05">
             <div id="mid">
 
-                <h1 style="text-align: center; border-bottom: 3px solid #000; width: 618px;">Programação</h1>
+                <h1 class="titleProg">Programação</h1>
                 <ul>
                     <li><a href="#cinemark" class="scroll"><div>Cinemark<br/>Midway Mall</div></a></li>
                     <li><a href="#moviecom" class="scroll"><div style="margin-left: 2px;">Moviecom<br/>Praia Shopping</div></a></li>
@@ -178,7 +290,11 @@ $contTD3 = 0;
                                         $icos .= "<font class=\"tresd\">3D</font>";
                                     }
 
-                                    $retirar = array('&nbsp;DIGITAL', '(dublado)', ' (nacional)', ' - Livre', ' - 10 Anos', ' - 12 Anos', ' - 14 Anos', ' - 16 Anos', ' - 18 Anos');
+                                    if (strpos("[" . $filme . "]", " 3D&nbsp;3D")) {
+                                        $icos .= "<font class=\"tresd\">3D</font>";
+                                    }
+
+                                    $retirar = array('&nbsp;DIGITAL', ' 3D&nbsp;3D', '(dublado)', ' (nacional)', ' - Livre', ' - 10 Anos', ' - 12 Anos', ' - 14 Anos', ' - 16 Anos', ' - 18 Anos');
                                     $filme = str_replace($retirar, '', $filme);
                                     $hora = str_replace(' - ', ', ', $hora);
 
@@ -224,6 +340,8 @@ $contTD3 = 0;
                             <div class="espLoc"></div>
                             <div id="locCinemark" class="barraLoc"><font id="rCinemark">>></font><font id="lCinemark" style="display: none;"><<</font></div>
                         </div>
+                        <div style="height: 20px;"></div>
+                        <div class="propaganda1" id='prop1' onclick="window.open('<?php echo $linkProp1; ?>', '_blank');"></div>
                     </div>
                 </div>
 
@@ -264,7 +382,7 @@ $contTD3 = 0;
                                         if ($idade == 'L') {
                                             $icos .= "<font class=\"livre\">L</font>";
                                         } else {
-                                            $icos .= "<font class=\"anos$idade\">$idade</font>";
+                                            $icos .= "<font class=\"anos $idade\">$idade</font>";
                                         }
 
                                         if (strpos("[" . $hora . "]", "Dub. - ")) {
@@ -334,13 +452,14 @@ $contTD3 = 0;
                             <div class="espLoc"></div>
                             <div id="locNatalShopping" class="barraLoc"><font id="rNatalShopping">>></font><font id="lNatalShopping" style="display: none;"><<</font></div>
                         </div>
-                        <div style="text-align: center; border: 2px solid #000; font-size: 12px; padding-top: 80px; width: 306px; height: 116px; margin-top: 20px">PROPAGANDA<br/>310x200</div>
+                        <div style="height: 20px;"></div>
+                        <div class="propaganda1" id='prop2' onclick="window.open('<?php echo $linkProp2; ?>', '_blank');"></div>
                     </div>
                 </div>
 
                 <div class="cinema" id="norteshopping">
                     <div class="prog">
-                        <h2 style="padding: 0px 0px 5px 30px;">//Cinépolis - Partage Norte Shopping</h2>
+                        <h2 style="padding: 0px 0px 5px  30px;">//Cinépolis - Partage Norte Shopping</h2>
                         <?php
                         foreach ($content->find('tr') as $elemento) {
                             $filme = '';
@@ -375,7 +494,7 @@ $contTD3 = 0;
                                         if ($idade == 'L') {
                                             $icos .= "<font class=\"livre\">L</font>";
                                         } else {
-                                            $icos .= "<font class=\"anos$idade\">$idade</font>";
+                                            $icos .= "<font class=\"anos $idade\">$idade</font>";
                                         }
 
                                         if (strpos("[" . $hora . "]", "Dub. - ")) {
@@ -445,12 +564,14 @@ $contTD3 = 0;
                             <div class="espLoc"></div>
                             <div id="locNorteShopping" class="barraLoc"><font id="rNorteShopping">>></font><font id="lNorteShopping" style="display: none;"><<</font></div>
                         </div>
+                        <div style="height: 20px;"></div>
+                        <div class="propaganda1" id='prop3' onclick="window.open('<?php echo $linkProp3; ?>', '_blank');"></div>
                     </div>
                 </div>
 
                 <div class="cinema" id="multicine">
                     <div class="prog">
-                        <h2 style="padding: 0px 0px 5px 30px;">//Multicine - Partage Shopping Mossoró</h2>
+                        <h2 style="padding: 0px 0px 5px 30p x;">//Multicine - Partage Shopping Mossoró</h2>
                         <?php
                         foreach ($content2->find('tr') as $elemento) {
                             $filme = '';
@@ -548,19 +669,21 @@ $contTD3 = 0;
                             <div class="espLoc"></div>
                             <div id="locMulticine" class="barraLoc"><font id="rMulticine">>></font><font id="lMulticine" style="display: none;"><<</font></div>
                         </div>
+                        <div style="height: 20px;"></div>
+                        <div class="propaganda1" id='prop4' onclick="window.open('<?php echo $linkProp4; ?>', '_blank');"></div>
                     </div>
                 </div>
 
             </div>
 
             <div style="clear: both; height: 10px;"></div>
-            <div style="text-align: center; border: 2px solid #000; font-size: 12px; padding-top: 26px; width: 746px; height: 50px; margin: 0 auto;">PROPAGANDA<br/>750x80</div>
+            <div class="propaganda2" id='prop5' onclick="window.open('<?php echo $linkProp5; ?>', '_blank');"></div>
             <div style="clear: both; height: 10px;"></div>
         </div>
 
         <div id="botBg">
             <div id="bot">
-                <p>© Copyright 2015 Filmões | <a href="http://pdsgroup.com.br/" target="_blank">Made with <font>♥</font> by PDS Group</a></p>
+                <p>© Copyright 2016 Filmões | <a href="http://pdsgroup.com.br/" target="_blank">Made with <font>♥</font> by PDS Group</a></p>
             </div>
         </div>
 
@@ -568,32 +691,72 @@ $contTD3 = 0;
     </body>
     <?php
     if (@$_GET['go'] == 'login') {
-        session_start();
-
         $usuario = $_POST['usuario'];
         $senha = $_POST['senha'];
         $senhaEncode = base64_encode($senha);
         $ok = mysql_num_rows(mysql_query("SELECT * FROM usuarios WHERE login = '$usuario' AND senha = '$senhaEncode'"));
 
         if ($ok == 1) {
-            //Criando a sessão com o NOME DO USUÁRIO
-            $nomeUsuario = mysql_query("SELECT nome FROM usuarios WHERE login = '$usuario'");
-            $hue = mysql_fetch_row($nomeUsuario);
-            $nomeUser = $hue[0];
-            $_SESSION['nome'] = $nomeUser;
+            $hue = mysql_fetch_row(mysql_query("SELECT nome FROM usuarios WHERE login = '$usuario'"));
+            $_SESSION['nome'] = $hue[0];
+            $laf = mysql_fetch_row(mysql_query("SELECT id FROM usuarios WHERE login = '$usuario'"));
+            $_SESSION['id'] = $laf[0];
 
-            //Criando sessão com a PERMISSÃO DO USUÁRIO
-            $permissao = mysql_query("SELECT per FROM usuarios WHERE login = '$usuario'");
-            $row = mysql_fetch_row($permissao);
-            $_SESSION['permissao'] = $row[0];
-
-            //Criando sessão com LOGIN
+            $row = mysql_fetch_row(mysql_query("SELECT per FROM usuarios WHERE login = '$usuario'"));
+            $per = $row[0];
+            $_SESSION['permissao'] = $per;
             $_SESSION ['usuario'] = $usuario;
 
-            //Redirecionando para PAINEL
-            echo "<meta http-equiv='refresh' content='0, url=painel.php'>";
+            if ($per == '0') {
+                echo "<meta http-equiv='refresh' content='0, url=painelAdm.php'>";
+            } else if ($per == '1') {
+                echo "<meta http-equiv='refresh' content='0, url=painelEmp.php'>";
+            } else if ($per == '2') {
+                echo "<meta http-equiv='refresh' content='0, url=painelUs.php'>";
+            }
         } else {
             echo "<script>alert('Usuário e senha não correspondem.'); history.back();</script>";
+        }
+    }
+    if (@$_GET['go'] == 'cadastro') {
+        $tipo = $_POST['tipoCad'];
+        $pfj = $_POST['pfj'];
+        $nome = $_POST['nomeCad'];
+        $razao = $_POST['razaoCad'];
+        $cad = $_POST['cadCad'];
+        $email = $_POST['emailCad'];
+        $usuario = $_POST['usuarioCad'];
+        $senha = $_POST ['senhaCad1'];
+        $senhaEncode = base64_encode($senha);
+        $per = '1';
+        $loc = 'painelEmp.php';
+        if ($tipo == '1') {
+            $razao = '';
+            $cad = '';
+            $per = '2';
+            $loc = 'painelUs.php';
+        }
+        if ($pfj == '2') {
+            $razao = '';
+        }
+
+        $conf1 = mysql_num_rows(mysql_query("SELECT id FROM usuarios WHERE login = '$usuario'"));
+        $conf2 = mysql_num_rows(mysql_query("SELECT id FROM usuarios WHERE email = '$email'"));
+        if ($conf1 == 1) {
+            echo ("<script> alert('Erro: Login já cadastrado!'); history.back(); </script>");
+        } else if ($conf2 == 1) {
+            echo ("<script> alert('Erro: E-mail já cadastrado!'); history.back(); </script>");
+        } else {
+            mysql_query("insert into usuarios(nome, razaoSocial, cad, email, login, senha, per) values ('$nome','$razao','$cad','$email','$usuario','$senhaEncode','$per')");
+            $idCli = mysql_insert_id();
+            if ($tipo == '1') {
+                mysql_query("insert into email(idCli, email, nome) values ('$idCli','$email','$nome')");
+            }
+            $_SESSION['id'] = $idCli;
+            $_SESSION['nome'] = $nome;
+            $_SESSION['permissao'] = $per;
+            $_SESSION ['usuario'] = $usuario;
+            echo ("<script>alert('Cadastrado com sucesso!'); location.href = '$loc';</script>");
         }
     }
     ?>

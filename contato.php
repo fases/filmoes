@@ -39,9 +39,9 @@ include "config.php";
                     <p>Rio Grande do Norte</p>
                     <ul>
                         <li><a href="index.php">PROGRAMAÇÃO</a></li>
-                        <li><a href="#" class="scroll">PREÇO</a></li>
-                        <li><a href="#" class="scroll">LOCALIZAÇÃO</a></li>
                         <li><a href="#mid" class="scroll">CONTATO</a></li>
+                        <li><a style="cursor: default;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a></li>
+                        <li><a href="#" class="scroll" style="color: #ff6200;">CADASTRE-SE</a></li>
                     </ul>
                 </div>
 
@@ -61,7 +61,6 @@ include "config.php";
                             <img src="imagens/slide/1.jpg">
                             <img src="imagens/slide/2.jpg">
                             <img src="imagens/slide/3.jpg">
-                            <img src="imagens/slide/4.jpg">
                         </div>
                     </div>
                 </div>
@@ -73,7 +72,7 @@ include "config.php";
                 <h1>Contato</h1>
                 <p id="entreEmContato">Entre em contato pelo telefone <font style="font-weight: bold;"> (84) 98115-4101 </font> ou pelo formulário abaixo.</p>
                 <div id="formGeral">
-                    <form method="post" action="enviarEmail.php">
+                    <form method="post" action="?go=email">
                         <div id="formLeft">
                             <p> Nome: </p>
                             <input type="text" name="nome" id="nome" class="txt" required/>
@@ -103,10 +102,39 @@ include "config.php";
 
         <div id="botBg">
             <div id="bot">
-                <p>© Copyright 2015 Filmões | <a href="http://pdsgroup.com.br/" target="_blank">Made with <font>♥</font> by PDS Group</a></p>
+                <p>© Copyright 2016 Filmões | <a href="http://pdsgroup.com.br/" target="_blank">Made with <font>♥</font> by PDS Group</a></p>
             </div>
         </div>
 
         <a href="#topBg" class="scroll" id="subir" style="display: none;"><div id="subirDiv"><div><</div></div></a>
     </body>
+    <?php
+    if (@$_GET['go'] == 'email') {
+        $emaildestinatario = 'contato@filmoes.com.br';
+        $assunto = $_POST['assunto'];
+        $nome = $_POST['nome'];
+        $contato = $_POST['contato'];
+        $email = trim($_POST['email']);
+        $mensagem = $_POST['mensagem'];
+
+        $mensagemHTML = '<p align="center"><b>MENSAGEM ENVIADA NO SITE</b></p>
+                            <p align="center"><b>-----------------------------------------</b></p>
+                            <p><b>Mensagem:</b> ' . $mensagem . ' </p>
+                            <p> </p>
+                            <p><i><b>Nome:</b> ' . $nome . ' </i></p>
+                            <p><i><b>Contato:</b> ' . $contato . ' </i></p>
+                            <p><i><b>E-Mail:</b> ' . $email . ' </i></p>
+                            <hr>';
+
+        $headers = "MIME-Version: 1.1\r\n";
+        $headers .= "Content-type: text/html; charset=utf-8\r\n";
+        $headers .= "From: $emaildestinatario\r\n";
+        $headers .= "Return-Path: $emaildestinatario \r\n";
+        $headers .= "Reply-To: $email \r\n";
+
+        mail($emaildestinatario, $assunto, $mensagemHTML, $headers);
+
+        echo "<script>alert('E-mail enviado com sucesso!'); location.href='contato.php'</script>";
+    }
+    ?>
 </html>

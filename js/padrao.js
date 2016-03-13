@@ -154,10 +154,116 @@ $(document).ready(function () {
         document.getElementById('usuario').focus();
     });
 
+    $('#btnCadastro').click(function (e) {
+        e.preventDefault();
+        $('.modal').fadeIn(500);
+        $('#cadastro').fadeIn(500);
+        document.getElementById('nomeCad').focus();
+    });
+
     $('.modal, .fechar').click(function (e) {
         if (e.target !== this)
             return;
         $('.modal').fadeOut(500);
         $('#loginPainel').fadeOut(500);
+        $('#cadastro').fadeOut(500);
     });
 });
+
+function propaganda() {
+    document.getElementById('divCad').style.display = 'block';
+    document.getElementById('trRazao').style.display = 'table-row';
+    document.getElementById('trCad').style.display = 'table-row';
+    document.getElementById('pfjCNPJ').checked = 'true';
+}
+
+function emails() {
+    document.getElementById('divCad').style.display = 'none';
+    document.getElementById('trRazao').style.display = 'none';
+    document.getElementById('trCad').style.display = 'none';
+}
+
+function CPF() {
+    document.getElementById('trRazao').style.display = 'none';
+    document.getElementById('nomeTipoCad').innerHTML = 'CPF';
+}
+
+function CNPJ() {
+    document.getElementById('trRazao').style.display = 'table-row';
+    document.getElementById('nomeTipoCad').innerHTML = 'CNPJ';
+}
+
+function validacao() {
+    var regra = /^[0-9]+$/;
+
+    if (document.getElementById('tipoCad2').checked == true) {
+        if (document.getElementById('pfjCNPJ').checked == true) {
+            if (document.getElementById('razaoCad').value == '') {
+                alert("Digite uma razão social!");
+                return false;
+            }
+            if (document.getElementById('cadCad').value == '') {
+                alert("Digite o CNPJ!");
+                return false;
+            }
+            if (!document.getElementById('cadCad').value.match(regra)) {
+                alert("CNPJ: Digite apenas números!");
+                return false;
+            }
+            if (document.getElementById('cadCad').value.length != '14') {
+                alert("CNPJ inválido!");
+                return false;
+            }
+        }
+        if (document.getElementById('pfjCPF').checked == true) {
+            if (document.getElementById('cadCad').value == '') {
+                alert("Digite o CPF!");
+                return false;
+            }
+            if (!document.getElementById('cadCad').value.match(regra)) {
+                alert("CPF: Digite apenas números!");
+                return false;
+            }
+            if (document.getElementById('cadCad').value.length != '11') {
+                alert("CPF inválido!");
+                return false;
+            }
+        }
+    }
+
+    if (document.getElementById('senhaCad1').value != document.getElementById('senhaCad2').value) {
+        alert("Senhas incompatíveis!");
+        return false;
+    }
+}
+
+function newAlert1(texto, tipo, link) {
+    swal({
+        title: "",
+        text: texto,
+        type: tipo,
+        animation: false
+    }, function () {
+        location.href = link;
+    });
+}
+
+function newAlert2(texto, tipo) {
+    swal({
+        title: "",
+        text: texto,
+        type: tipo,
+        animation: false
+    });
+}
+
+function newAlert3(texto, tipo) {
+    swal({
+        title: "",
+        text: texto,
+        type: tipo,
+        animation: false
+    }, function () {
+        history.back();
+    });
+}
